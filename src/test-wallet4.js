@@ -48,6 +48,20 @@ async function init() {
         );
     }
 
+    const ecTransfer = async () => {
+        console.log(
+            'Extra currency transfer',
+            await wallet.methods.transfer({
+                secretKey: keyPair.secretKey,
+                toAddress: BENEFICIARY,
+                amount: new TonWeb.utils.CurrencyCollection(0, {id: 100, value: new TonWeb.utils.BN(1 * (10 ** 6))}),
+                seqno: seqno || 0,
+                payload: 'Hello EC',
+                sendMode: 3
+            }).send()
+        );
+    }
+
     // Create subscription
 
     const subscription = new SubscriptionContract(tonweb.provider, {
@@ -140,6 +154,7 @@ async function init() {
     //
 
     // await simpleTransfer();
+    await ecTransfer();
     // await deployAndInstallPlugin();
     // await installPlugin();
     // await removePlugin();
