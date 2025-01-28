@@ -21,6 +21,8 @@ const {
     newSeed
 } = require("./Utils");
 
+const { waitSome } = require("./Time");
+
 const Address = require("./Address").default;
 const AdnlAddress = require("./AdnlAddress").default;
 const StorageBagId = require("./StorageBagId").default;
@@ -135,5 +137,6 @@ module.exports = {
     formatTransferUrl,
     keyPairFromSeed,
     newKeyPair,
-    newSeed
+    newSeed,
+    waitSome
 };
